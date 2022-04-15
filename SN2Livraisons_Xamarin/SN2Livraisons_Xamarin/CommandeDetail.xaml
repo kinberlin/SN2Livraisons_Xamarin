@@ -3,13 +3,82 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sign="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms"
              mc:Ignorable="d"
              x:Class="SN2Livraisons_Xamarin.CommandeDetail">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+    <ScrollView BackgroundColor="BlueViolet">
+            <StackLayout>
+                <Label FontSize="30"
+                   TextColor="Black"
+                   Text="Commande"
+                   Padding="10,20,0,0"
+                   HorizontalOptions="Start"/>
+                <StackLayout Orientation="Vertical" Spacing="20">
+                    <StackLayout  Padding="30,0,0,0">
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                            <Label FontSize="Medium" Text="Reference : "
+                        FontAttributes="Bold" HorizontalOptions="Start"/>
+                        <Label x:Name="Reference" HorizontalOptions="End"  FontSize="Medium"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                            <Label Text="Date : " 
+                        HorizontalOptions="Start" FontAttributes="Bold" />
+                        <Label x:Name="Date" HorizontalOptions="End"  FontSize="Medium"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                            <Label Text="Lieu:"
+                        HorizontalOptions="Start" FontAttributes="Bold"/>
+                        <Label x:Name="Lieu" HorizontalOptions="End"  FontSize="Medium"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                            <Label Text="Client:"
+                        HorizontalOptions="Start" VerticalOptions="Center"
+                        FontAttributes="Bold"/>
+                            <Label x:Name="Client" 
+                       HorizontalOptions="End"  FontSize="Medium"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                            <Label Text="Telephone:" FontSize="Medium"
+                        FontAttributes="Bold" HorizontalOptions="Start"/>
+                            <Label x:Name="Telephone" TextColor="#71E7B6"
+                       HorizontalOptions="End"  FontSize="Medium"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout>
+                        <sign:SignaturePadView x:Name="signature"
+                                            StrokeWidth="5"
+                                            WidthRequest="250"
+                                            HeightRequest="300"
+                                            BackgroundColor="White"
+                                            StrokeColor="Beige"
+                                            CaptionText="Firma">
+                        </sign:SignaturePadView>
+
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="30" HorizontalOptions="Center">
+                        <Button x:Name="CancelBtn" 
+
+                        HeightRequest="50"
+                        WidthRequest="150"
+                        CornerRadius="20"
+                        Text="Annuler"
+                        TextColor="White"
+                        VerticalOptions="Center"
+                        BackgroundColor="CadetBlue"
+                        HorizontalOptions="Start"
+                        Clicked="BtnAnnuler_Clicked"/>
+                        <Button x:Name="SaveBtn" 
+                        HeightRequest="50"
+                        WidthRequest="150"
+                        CornerRadius="20"
+                        Text="Enregistrer"
+                        TextColor="White"
+                        VerticalOptions="Center"
+                        BackgroundColor="CadetBlue"
+                        HorizontalOptions="EndAndExpand"
+                        Clicked="BtnEnregistrer_Clicked"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
 </ContentPage>

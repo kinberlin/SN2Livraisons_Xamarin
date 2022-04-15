@@ -6,12 +6,11 @@ namespace Models
 {
    public class Livraison
     {
-        public string Reference;
-        public string Lieu;
-        public DateTime DateHeure;
-        public string DateHeures;
-        public bool Effectuer;
-        public List<Commandes> CommandList;
+        public string Reference { get; set; }
+        public string Lieu { get; set; }
+        public DateTime DateHeure { get; set; }
+        public bool Effectuer { get; set; }
+        public Commandes Command { get; set; }
 
         public Livraison(string reference, string lieu, DateTime dateHeure)
         {
@@ -22,17 +21,9 @@ namespace Models
         }
         public Livraison() { }
 
-        public Livraison(string reference, string lieu, DateTime dateHeure, List<Commandes> commandList) : this(reference, lieu, dateHeure)
+        public Livraison(string reference, string lieu, DateTime dateHeure, Commandes command) : this(reference, lieu, dateHeure)
         {
-            CommandList = commandList;
-        }
-        public Livraison(string reference, string lieu, string dateHeure, List<Commandes> commandList) 
-        {
-            CommandList = commandList;
-            Effectuer = false;
-            Reference = reference;
-            Lieu = lieu;
-            DateHeures = dateHeure;
+            Command = command;
         }
     }
 }

@@ -1,9 +1,7 @@
 ﻿using Models;
 using Repository;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -12,7 +10,7 @@ namespace SN2Livraisons_Xamarin
 {
    public class LivraisonViewModel : INotifyPropertyChanged
     {
-        private List<Livraison> _Livraisons;
+        public List<Livraison> _Livraisons;
         private Livraison _selectedLivraison;
         private bool _isRefreshing;
 
@@ -20,6 +18,7 @@ namespace SN2Livraisons_Xamarin
         {
             get
             {
+                _Livraisons = LivraisonRepository.Livraisons.FindAll(x => x.Effectuer == false);
                 return _Livraisons;
             }
             set
@@ -32,6 +31,7 @@ namespace SN2Livraisons_Xamarin
         {
             get
             {
+                Application.Current.MainPage = new NavigationPage(new CommandeDetail(_selectedLivraison));
                 return _selectedLivraison;
             }
             set
@@ -59,7 +59,8 @@ namespace SN2Livraisons_Xamarin
         public LivraisonViewModel()
         {
             LivraisonRepository liv = new LivraisonRepository();
-            Livraisons = liv.Livraisons;
+            // Livraisons = liv.Livraisons;
+            Livraisons = LivraisonRepository.Livraisons;
             RefreshCommand = new Command(CmdRefresh);
         }
 

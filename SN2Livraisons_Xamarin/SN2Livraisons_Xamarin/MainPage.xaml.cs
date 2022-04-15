@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Models;
+using Repository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -16,8 +18,8 @@ namespace SN2Livraisons_Xamarin
     {
         public MainPage()
         {
-            InitializeComponent();
             BindingContext = new LivraisonViewModel();
+            InitializeComponent();
         }
 
         private void BtnEffectuer_Clicked(object sender, EventArgs e)
